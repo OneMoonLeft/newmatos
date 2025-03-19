@@ -19,6 +19,11 @@ const TentCharacteristic = <T extends recordableKeyOf<Tent>>({
   value,
   variants,
 }: TentCharacteristicProps<T>) => {
+  // Ensure the name is exactly 3 characters
+  if (typeof value === "string" && value.length !== 3) {
+    console.warn("Tent name must be exactly 3 characters.");
+  }
+
   const variantClassName = variants
     ? `${variants[value]} text-slate-100`
     : "bg-gray-200"
