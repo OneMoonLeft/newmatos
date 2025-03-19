@@ -25,8 +25,8 @@ const SiteCloseBanner = () => {
     <div className="w-full bg-gradient-to-tl from-red-400 to-red-600 text-white">
       <div className="mx-auto flex flex-col items-center justify-between gap-1 p-3 text-sm sm:flex-row sm:gap-2 sm:p-4 sm:text-base lg:container">
         <div className="text-center">
-          <span className="font-bold">MonMatos</span> fermera définitivement le{" "}
-          <span className="font-bold">7 avril 2024</span>
+          <span className="font-bold">MonMatos</span> est en version {" "}
+          <span className="font-bold">beta</span>
         </div>
         <div className="flex gap-6">
           <button
