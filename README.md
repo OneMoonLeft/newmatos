@@ -31,7 +31,7 @@ _You can use [Planetscale](https://planetscale.com) or [Railway](https://railway
 1. Clone the repository
 
 ```bash
-$ git clone https://github.com/omelette-watin/monmatos
+$ git clone https://github.com/OneMoonLeft/newmatos
 ```
 2. Install dependencies
 
