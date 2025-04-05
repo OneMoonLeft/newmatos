@@ -35,7 +35,7 @@ const SiteCloseBanner = () => {
           >
             J'ai compris
           </button>
-          <Link href="https://discord.gg/9Ue6cMAS" target="_blank">
+          <Link href="https://www.youtube.com/watch?v=E4WlUXrJgy4" target="_blank">
             <a
               target="_blank"
               className="animate-[pulse_1500ms_infinite] underline underline-offset-1"
