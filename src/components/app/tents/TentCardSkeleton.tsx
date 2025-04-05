@@ -33,14 +33,14 @@ const TentCardSkeleton = () => {
           </div>
         </div>
         <div className="flex items-center justify-between">
-          <div className="rounded-md bg-gray-200 text-xs underline">
+          <div className="rounded-md bg-gray-200 text-xs underline cursor-pointer">
             Voir plus d'infos
           </div>
           <div className="flex items-center space-x-1">
-            <div className="rounded-full bg-gray-200">
+            <div className="rounded-full bg-gray-200 p-2">
               <Icon name="HiPencil" />
             </div>
-            <div className="rounded-full bg-gray-200">
+            <div className="rounded-full bg-gray-200 p-2">
               <Icon name="HiTrash" />
             </div>
           </div>
