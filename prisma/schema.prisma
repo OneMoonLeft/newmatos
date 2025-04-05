@@ -19,8 +19,7 @@ model Group {
 
 model Tent {
   id                String   @id @default(uuid())
-  identifyingNum    Int
-  identifyingString String?
+  identifyingString String   @unique  // Keep this as the unique identifier
   size              Int
   unit              Unit     @default(GROUPE)
   state             State
@@ -33,8 +32,10 @@ model Tent {
   groupId           String
   group             Group    @relation(fields: [groupId], references: [id])
 
-  @@unique([groupId, identifyingNum], name: "TentIdentifier")
+  @@unique([groupId, identifyingString], name: "TentIdentifier") // Adjust unique constraint
 }
+
+
 
 enum Movement {
   SGDF
@@ -55,7 +56,7 @@ enum Unit {
 
 enum State {
   INUTILISABLE
-  MAUVAIS - Eviter l'utilisation
+  MAUVAIS
   BON
   NEUF
 }
