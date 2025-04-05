@@ -17,22 +17,23 @@ const TentCard: FC<UIProps<{ tent: Tent }>> = ({ tent }) => {
   const { movement } = useGroup()
   const { identifyingNum, identifyingString, size, unit, state, type } = tent
   const { setModal } = useModalContext()
+
   const openViewPanel = () =>
     setModal({
       component: <TentViewPanel tent={tent} />,
       visible: true,
     })
 
-  const openDeletePanel = (e: { stopPropagation: () => void }) => {
+  const openDeletePanel = (e: React.MouseEvent) => {
     e.stopPropagation()
     setModal({
       component: <TentDeletePanel tent={tent} />,
       visible: true,
     })
   }
-  const openUpdatePanel = (e: { stopPropagation: () => void }) => {
-    e.stopPropagation()
 
+  const openUpdatePanel = (e: React.MouseEvent) => {
+    e.stopPropagation()
     setModal({
       component: <TentUpdatePanel tent={tent} />,
       visible: true,
@@ -44,12 +45,12 @@ const TentCard: FC<UIProps<{ tent: Tent }>> = ({ tent }) => {
       <div className="flex flex-col gap-4">
         {identifyingString ? (
           <div className="flex flex-col gap-2 pt-3 pb-2">
-            <h2 className="truncate text-2xl font-semibold">
-              {identifyingString}
-            </h2>
+            <h2 className="truncate text-2xl font-semibold">{identifyingString}</h2>
             <h3 className="text-sm font-bold">
-              {units[movement][unit] || "GROUPE"} -{" "}
-              <span className="text-sm font-semibold ">{size} places</span>
+                {units[movement][unit] || "GROUPE"} -{" "}
+                <span className="text-sm font-semibold">
+                {size === 0 ? "Structure" : `${size} places`}
+                </span>
             </h3>
           </div>
         ) : (
@@ -58,29 +59,24 @@ const TentCard: FC<UIProps<{ tent: Tent }>> = ({ tent }) => {
               <h2 className="text-2xl font-bold">{identifyingNum}</h2>
             </div>
             <div className="text-left">
-              <h3 className="text-sm font-bold leading-tight">
-                {units[movement][unit] || "GROUPE"}
-              </h3>
-              <p className="text-sm font-semibold ">{size} places</p>
+              <h3 className="text-sm font-bold leading-tight">{units[movement][unit] || "GROUPE"}</h3>
+              <p className="text-sm font-semibold">{size} places</p>
             </div>
           </div>
         )}
 
         <div className="space-y-2">
           <TentCharacteristic
-            type={"state"}
+            type="state"
             label="ÉTAT"
             value={state}
             variants={stateColors}
           />
-          <TentCharacteristic
-            type={"type"}
-            label="TYPE"
-            value={type.toUpperCase()}
-          />
+          <TentCharacteristic type="type" label="TYPE" value={type.toUpperCase()} />
         </div>
+
         <div className="flex items-center justify-between">
-          <div className="text-xs underline" onClick={openViewPanel}>
+          <div className="text-xs underline cursor-pointer" onClick={openViewPanel}>
             Voir plus d'infos
           </div>
           <div className="flex items-center">
